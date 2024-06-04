@@ -1,0 +1,53 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { MoveDownRight } from 'lucide-react';
+import { CldImage } from 'next-cloudinary';
+
+import { ParallaxSlider } from '@/components';
+
+import { slideUp } from './variants';
+
+export function Header() {
+  return (
+    <motion.header
+      className='h-screen relative overflow-hidden bg-[#b4b8bb] text-background'
+      variants={slideUp}
+      initial='initial'
+      animate='enter'
+    >
+      <CldImage
+        alt='Moe Osman Photo'
+        className='object-cover scale-100 md:object-contain'
+        fill={true}
+        sizes='100vw'
+        src='https://res.cloudinary.com/dbhn2rp83/image/upload/v1711373927/Portfolio%20stuff/header-bg.jpg'
+      />
+      <div className='flex flex-col justify-end relative h-full gap-2 md:flex-col-reverse md:justify-normal'>
+        <div className='select-none'>
+          <h1 className='text-[max(9em,15vw)]'>
+            <ParallaxSlider baseVelocity={2} repeat={4}>
+              <span className='pe-12'>
+                Moe Osman
+                <span className='spacer'>—</span>
+              </span>
+            </ParallaxSlider>
+          </h1>
+        </div>
+
+        <div className='md:ml-auto'>
+          <div className='max-md:my-12 md:mx-36 mx-10'>
+            <div className='mb-4 md:mb-20'>
+              <MoveDownRight size={28} strokeWidth={1.25} />
+            </div>
+
+            <h4 className='text-[clamp(1.55em,2.5vw,2.75em)]'>
+              <span className='block'>Freelance</span>
+              <span className='block'>Designer &amp; Developer</span>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </motion.header>
+  );
+}
